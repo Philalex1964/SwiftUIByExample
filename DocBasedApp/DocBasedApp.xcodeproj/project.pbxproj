@@ -11,6 +11,7 @@
 		3AA1BF5A2845030900F896BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BF592845030900F896BA /* ContentView.swift */; };
 		3AA1BF5C2845030A00F896BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BF5B2845030A00F896BA /* Assets.xcassets */; };
 		3AA1BF5F2845030A00F896BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BF5E2845030A00F896BA /* Preview Assets.xcassets */; };
+		3AA1BF662845032D00F896BA /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BF652845032D00F896BA /* TextFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		3AA1BF592845030900F896BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3AA1BF5B2845030A00F896BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AA1BF5E2845030A00F896BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AA1BF652845032D00F896BA /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				3AA1BF572845030900F896BA /* DocBasedAppApp.swift */,
 				3AA1BF592845030900F896BA /* ContentView.swift */,
+				3AA1BF652845032D00F896BA /* TextFile.swift */,
 				3AA1BF5B2845030A00F896BA /* Assets.xcassets */,
 				3AA1BF5D2845030A00F896BA /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA1BF662845032D00F896BA /* TextFile.swift in Sources */,
 				3AA1BF5A2845030900F896BA /* ContentView.swift in Sources */,
 				3AA1BF582845030900F896BA /* DocBasedAppApp.swift in Sources */,
 			);
@@ -275,6 +279,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +309,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
