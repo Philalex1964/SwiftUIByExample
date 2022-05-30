@@ -9,19 +9,22 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.managedObjectContext) var managedObjectContext
 
-    
-//    @FetchRequest(
-//        sortDescriptors: [SortDescriptor(\.name)],
-//        predicate: NSPredicate(format: "name == %@", "Example Language 1")
-//    ) var languages: FetchedResults<ProgrammingLanguage>
-    
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.name),
-        SortDescriptor(\.creator, order: .reverse)
-    ]) var languages: FetchedResults<ProgrammingLanguage>
+    @FetchRequest var languages: FetchedResults<ProgrammingLanguage>
+
+    init() {
+        let request: NSFetchRequest<ProgrammingLanguage> = ProgrammingLanguage.fetchRequest()
+        
+//        request.predicate = NSPredicate(format: "name == %@", "Swift")
+        request.sortDescriptors = [
+                NSSortDescriptor(keyPath: \ProgrammingLanguage.creator, ascending: true)
+        ]
+
+        request.fetchLimit = 10
+        _languages = FetchRequest(fetchRequest: request)
+    }
+
     
     var body: some View {
         NavigationView {
@@ -42,9 +45,9 @@ struct ContentView: View {
         
         
         Button("Insert example language") {
-            let language = ProgrammingLanguage(context: viewContext)
-            language.name = "Swift"
-            language.creator = "Apple"
+            let language = ProgrammingLanguage(context: managedObjectContext)
+            language.name = "C#"
+            language.creator = "Microsoft"
 
             PersistenceController.shared.save()
 
@@ -66,7 +69,7 @@ struct ContentView: View {
     func removeLanguages(at offsets: IndexSet) {
         for index in offsets {
             let language = languages[index]
-            viewContext.delete(language)
+            managedObjectContext.delete(language)
         }
         
         PersistenceController.shared.save()
