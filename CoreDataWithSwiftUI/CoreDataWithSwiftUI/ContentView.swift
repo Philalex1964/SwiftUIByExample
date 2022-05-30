@@ -11,15 +11,15 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.name)],
-        predicate: NSPredicate(format: "name == %@", "Example Language 1")
-    ) var languages: FetchedResults<ProgrammingLanguage>
+//    @FetchRequest(
+//        sortDescriptors: [SortDescriptor(\.name)],
+//        predicate: NSPredicate(format: "name == %@", "Example Language 1")
+//    ) var languages: FetchedResults<ProgrammingLanguage>
     
-//    @FetchRequest(sortDescriptors: [
-//        SortDescriptor(\.name),
-//        SortDescriptor(\.creator, order: .reverse)
-//    ]) var languages: FetchedResults<ProgrammingLanguage>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.name),
+        SortDescriptor(\.creator, order: .reverse)
+    ]) var languages: FetchedResults<ProgrammingLanguage>
     
     var body: some View {
         List(languages) { language in
@@ -28,6 +28,25 @@ struct ContentView: View {
             Text(language.creator ?? "Unknown")
             }
         }
+        
+        Button("Insert example language") {
+            let language = ProgrammingLanguage(context: viewContext)
+            language.name = "Python"
+            language.creator = "Guido van Rossum"
+
+            PersistenceController.shared.save()
+
+//            use this code instead:
+//            if viewContext.hasChanges {
+//              do {
+//                  try managedObjectContext.save()
+//              } catch {
+//                  // handle the Core Data error
+//              }
+//            }
+        }
+        
+        
     }
 }
     
