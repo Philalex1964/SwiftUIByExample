@@ -11,15 +11,15 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-//    @FetchRequest(
-//        sortDescriptors: [SortDescriptor(\.name)],
-//        predicate: NSPredicate(format: "name == %@", "Python")
-//    ) var languages: FetchedResults<ProgrammingLanguage>
+    @FetchRequest(
+        sortDescriptors: [SortDescriptor(\.name)],
+        predicate: NSPredicate(format: "name == %@", "Example Language 1")
+    ) var languages: FetchedResults<ProgrammingLanguage>
     
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.name),
-        SortDescriptor(\.creator, order: .reverse)
-    ]) var languages: FetchedResults<ProgrammingLanguage>
+//    @FetchRequest(sortDescriptors: [
+//        SortDescriptor(\.name),
+//        SortDescriptor(\.creator, order: .reverse)
+//    ]) var languages: FetchedResults<ProgrammingLanguage>
     
     var body: some View {
         List(languages) { language in
