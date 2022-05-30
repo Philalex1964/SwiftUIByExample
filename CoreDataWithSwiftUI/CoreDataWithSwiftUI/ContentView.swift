@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) var managedObjectContext
+
     
 //    @FetchRequest(
 //        sortDescriptors: [SortDescriptor(\.name)],
@@ -22,17 +24,27 @@ struct ContentView: View {
     ]) var languages: FetchedResults<ProgrammingLanguage>
     
     var body: some View {
-        List(languages) { language in
-            HStack {
-            Text(language.name ?? "Unknown")
-            Text(language.creator ?? "Unknown")
+        NavigationView {
+            List {
+                ForEach(languages) { language in
+                    HStack {
+                        Text(language.name ?? "Unknown")
+                        Spacer()
+                        Text(language.creator ?? "Unknown")
+                    }
+                }
+                .onDelete(perform: removeLanguages)
+            }
+            .toolbar {
+                EditButton()
             }
         }
         
+        
         Button("Insert example language") {
             let language = ProgrammingLanguage(context: viewContext)
-            language.name = "Python"
-            language.creator = "Guido van Rossum"
+            language.name = "Swift"
+            language.creator = "Apple"
 
             PersistenceController.shared.save()
 
@@ -47,6 +59,17 @@ struct ContentView: View {
         }
         
         
+        
+        
+    }
+    
+    func removeLanguages(at offsets: IndexSet) {
+        for index in offsets {
+            let language = languages[index]
+            viewContext.delete(language)
+        }
+        
+        PersistenceController.shared.save()
     }
 }
     
