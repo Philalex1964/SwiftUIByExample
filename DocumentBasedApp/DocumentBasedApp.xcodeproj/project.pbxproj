@@ -11,6 +11,7 @@
 		3AA1BF232844FCB200F896BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BF222844FCB200F896BA /* ContentView.swift */; };
 		3AA1BF252844FCB300F896BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BF242844FCB300F896BA /* Assets.xcassets */; };
 		3AA1BF282844FCB300F896BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BF272844FCB300F896BA /* Preview Assets.xcassets */; };
+		3AA1BF30284500C800F896BA /* TerxtFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BF2F284500C800F896BA /* TerxtFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		3AA1BF222844FCB200F896BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3AA1BF242844FCB300F896BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AA1BF272844FCB300F896BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AA1BF2E2844FF4100F896BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3AA1BF2F284500C800F896BA /* TerxtFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerxtFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +54,10 @@
 		3AA1BF1F2844FCB200F896BA /* DocumentBasedApp */ = {
 			isa = PBXGroup;
 			children = (
+				3AA1BF2E2844FF4100F896BA /* Info.plist */,
 				3AA1BF202844FCB200F896BA /* DocumentBasedAppApp.swift */,
 				3AA1BF222844FCB200F896BA /* ContentView.swift */,
+				3AA1BF2F284500C800F896BA /* TerxtFile.swift */,
 				3AA1BF242844FCB300F896BA /* Assets.xcassets */,
 				3AA1BF262844FCB300F896BA /* Preview Content */,
 			);
@@ -137,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA1BF30284500C800F896BA /* TerxtFile.swift in Sources */,
 				3AA1BF232844FCB200F896BA /* ContentView.swift in Sources */,
 				3AA1BF212844FCB200F896BA /* DocumentBasedAppApp.swift in Sources */,
 			);
@@ -270,6 +276,7 @@
 				DEVELOPMENT_TEAM = 8GR4L8J4R6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DocumentBasedApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +306,7 @@
 				DEVELOPMENT_TEAM = 8GR4L8J4R6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DocumentBasedApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
