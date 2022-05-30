@@ -7,28 +7,49 @@
 
 import SwiftUI
 
-struct AddView: View {
-    @Binding var isPresented: Bool
-
-    var body: some View {
-        Button("Dismiss") {
-            isPresented = false
-        }
-    }
-}
-
+// one textField
+//struct ContentView: View {
+//    @FocusState private var isUsernameFocused: Bool
+//    @State private var username = "Anonymous"
+//
+//    var body: some View {
+//        VStack {
+//            TextField("Enter your username", text: $username)
+//                .focused($isUsernameFocused)
+//                .frame(width: 200, height: 42, alignment: .center)
+//
+//            Button("Toggle Focus") {
+//                isUsernameFocused.toggle()
+//                print(isUsernameFocused)
+//            }
+//        }
+//    }
+//}
+ 
 struct ContentView: View {
-    @State private var showingAddUser = false
+    enum FocusedField {
+        case username, password
+    }
+
+    @FocusState private var focusedField: FocusedField?
+    @State private var username = "Anonymous"
+    @State private var password = "sekrit"
 
     var body: some View {
         VStack {
-            Text("Hello World")
-            Button("Toggle") {
-                showingAddUser.toggle()
-            }
+            TextField("Enter your username", text: $username)
+                .focused($focusedField, equals: .username)
+            focused(f)
+
+            SecureField("Enter your password", text: $password)
+                .focused($focusedField, equals: .password)
         }
-        .sheet(isPresented: $showingAddUser) {
-            AddView(isPresented: $showingAddUser)
+        .onSubmit {
+            if focusedField == .username {
+                focusedField = .password
+            } else {
+                focusedField = nil
+            }
         }
     }
 }
