@@ -13,5 +13,5 @@ struct DocBasedAppApp: App {
             DocumentGroup(newDocument: TextFile()) { file in
                 ContentView(document: file.$document)
             }
-        }
+    }
 }
