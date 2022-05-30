@@ -10,7 +10,12 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
+    @FetchRequest(
+        sortDescriptors: [SortDescriptor(\.name)],
+        predicate: NSPredicate(format: "name == %@", "Python")
+    ) var languages: FetchedResults<ProgrammingLanguage>
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
