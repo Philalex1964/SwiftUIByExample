@@ -6,51 +6,28 @@
 //
 
 import SwiftUI
-
-// one textField
-//struct ContentView: View {
-//    @FocusState private var isUsernameFocused: Bool
-//    @State private var username = "Anonymous"
-//
-//    var body: some View {
-//        VStack {
-//            TextField("Enter your username", text: $username)
-//                .focused($isUsernameFocused)
-//                .frame(width: 200, height: 42, alignment: .center)
-//
-//            Button("Toggle Focus") {
-//                isUsernameFocused.toggle()
-//                print(isUsernameFocused)
-//            }
-//        }
-//    }
-//}
  
 struct ContentView: View {
-    enum FocusedField {
-        case username, password
-    }
-
-    @FocusState private var focusedField: FocusedField?
-    @State private var username = "Anonymous"
-    @State private var password = "sekrit"
+    @GestureState var dragAmount = CGSize.zero
 
     var body: some View {
-        VStack {
-            TextField("Enter your username", text: $username)
-                .focused($focusedField, equals: .username)
-            focused(f)
-
-            SecureField("Enter your password", text: $password)
-                .focused($focusedField, equals: .password)
-        }
-        .onSubmit {
-            if focusedField == .username {
-                focusedField = .password
-            } else {
-                focusedField = nil
-            }
-        }
+        Image("Example")
+            .resizable()
+            .scaledToFit()
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.blue, lineWidth: 4)
+            )
+            .frame(width: 200, height: 200)
+            .scaledToFit()
+//            .border(.black, width: 2)
+            .offset(dragAmount)
+            .gesture(
+                DragGesture().updating($dragAmount) { value, state, transaction in
+                    state = value.translation
+                }
+            )
     }
 }
 
