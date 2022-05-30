@@ -7,24 +7,29 @@
 
 import SwiftUI
 
-class Order: ObservableObject {
-    @Published var items = [String]()
+struct AddView: View {
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        Button("Dismiss") {
+            isPresented = false
+        }
+    }
 }
 
 struct ContentView: View {
-    @EnvironmentObject var order: Order
-    
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.managedObjectContext) var managedObjectContext
-    
-    @Environment(\.accessibilityReduceMotion) var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) var reduceTransparency
-    @Environment(\.accessibilityEnabled) var accessibilityEnabled
-    
+    @State private var showingAddUser = false
+
     var body: some View {
-        
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hello World")
+            Button("Toggle") {
+                showingAddUser.toggle()
+            }
+        }
+        .sheet(isPresented: $showingAddUser) {
+            AddView(isPresented: $showingAddUser)
+        }
     }
 }
 
