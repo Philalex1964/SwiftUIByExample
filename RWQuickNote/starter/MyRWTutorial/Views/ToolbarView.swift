@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import LocalAuthentication
 
 // swiftlint:disable multiple_closures_with_trailing_closure
 struct ToolbarView: View {
@@ -39,6 +40,34 @@ struct ToolbarView: View {
   @Binding var setPasswordModal: Bool
   @State private var showUnlockModal: Bool = false
   @State private var changePasswordModal: Bool = false
+  
+  func tryBiometricAuthentication() {
+    let context = LAContext()
+    var error: NSError?
+
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+      let reason = "Authenticate to unlock your note."
+      context.evaluatePolicy(//.deviceOwnerAuthentication - adds device passcode
+        .deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { authenticated, error in
+        DispatchQueue.main.async {
+          if authenticated {
+            self.noteLocked = false
+          } else {
+            if let errorString = error?.localizedDescription {
+              print("Error in biometric policy evaluation: \(errorString)")
+            }
+            self.showUnlockModal = true
+          }
+        }
+      }
+    } else {
+      if let errorString = error?.localizedDescription {
+        print("Error in biometric policy evaluation: \(errorString)")
+      }
+      
+      showUnlockModal = true
+    }
+  }
 
   var body: some View {
     HStack {
@@ -92,7 +121,8 @@ struct ToolbarView: View {
         action: {
           if self.noteLocked {
             // Biometric Authentication Point
-            self.showUnlockModal = true
+//            self.showUnlockModal = true
+            self.tryBiometricAuthentication()
           } else {
             self.noteLocked = true
           }

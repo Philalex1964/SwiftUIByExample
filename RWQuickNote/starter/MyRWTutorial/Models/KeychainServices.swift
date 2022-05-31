@@ -79,7 +79,6 @@ class KeychainWrapper {
         service: service)
       return
     }
-
     
     let query: [String: Any] = [
       kSecClass as String: kSecClassGenericPassword,
