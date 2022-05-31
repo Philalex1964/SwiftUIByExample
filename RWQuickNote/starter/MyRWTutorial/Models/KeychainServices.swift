@@ -84,6 +84,11 @@ class KeychainWrapper {
     switch status {
     case errSecSuccess:
       break
+    case errSecDuplicateItem:
+      try updateGenericPasswordFor(
+        account: account,
+        service: service,
+        password: password)
     default:
       throw KeychainWrapperError(status: status, type: .servicesError)
     }
@@ -122,4 +127,38 @@ class KeychainWrapper {
     
     return value
   }
+  
+  func updateGenericPasswordFor(
+    account: String,
+    service: String,
+    password: String
+  ) throws {
+    guard let passwordData = password.data(using: .utf8) else {
+      print("Error converting value to data.")
+      return
+    }
+    // 1
+    let query: [String: Any] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrAccount as String: account,
+      kSecAttrService as String: service
+    ]
+
+    // 2
+    let attributes: [String: Any] = [
+      kSecValueData as String: passwordData
+    ]
+
+    // 3
+    let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
+    guard status != errSecItemNotFound else {
+      throw KeychainWrapperError(
+        message: "Matching Item Not Found",
+        type: .itemNotFound)
+    }
+    guard status == errSecSuccess else {
+      throw KeychainWrapperError(status: status, type: .servicesError)
+    }
+  }
+
 }
