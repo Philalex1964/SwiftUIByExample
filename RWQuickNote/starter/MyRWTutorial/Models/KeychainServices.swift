@@ -73,6 +73,14 @@ class KeychainWrapper {
       throw KeychainWrapperError(type: .badData)
     }
     
+    if password.isEmpty {
+      try deleteGenericPasswordFor(
+        account: account,
+        service: service)
+      return
+    }
+
+    
     let query: [String: Any] = [
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: account,
@@ -160,5 +168,21 @@ class KeychainWrapper {
       throw KeychainWrapperError(status: status, type: .servicesError)
     }
   }
+  
+  func deleteGenericPasswordFor(account: String, service: String) throws {
+    // 1
+    let query: [String: Any] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrAccount as String: account,
+      kSecAttrService as String: service
+    ]
+
+    // 2
+    let status = SecItemDelete(query as CFDictionary)
+    guard status == errSecSuccess || status == errSecItemNotFound else {
+      throw KeychainWrapperError(status: status, type: .servicesError)
+    }
+  }
+
 
 }
