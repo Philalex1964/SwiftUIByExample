@@ -34,6 +34,26 @@ import SwiftUI
 import LocalAuthentication
 
 // swiftlint:disable multiple_closures_with_trailing_closure
+
+func getBiometricType() -> String {
+  let context = LAContext()
+
+  _ = context.canEvaluatePolicy(
+    .deviceOwnerAuthenticationWithBiometrics,
+    error: nil)
+  switch context.biometryType {
+  case .faceID:
+    return "faceid"
+  case .touchID:
+    // In iOS 14 and later, you can use "touchid" here
+    return "lock"
+  case .none:
+    return "lock"
+  @unknown default:
+    return "lock"
+  }
+}
+
 struct ToolbarView: View {
   @Binding var noteLocked: Bool
   @ObservedObject var noteData: NoteData
@@ -128,7 +148,8 @@ struct ToolbarView: View {
           }
         }) {
         // Lock Icon
-        Image(systemName: noteLocked ? "lock" : "lock.open")
+//        Image(systemName: noteLocked ? "lock" : "lock.open")
+          Image(systemName: noteLocked ? getBiometricType() : "lock.open")
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(width: 25.0, height: 25.0)
