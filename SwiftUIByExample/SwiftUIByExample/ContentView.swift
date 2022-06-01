@@ -8,18 +8,16 @@
 import SwiftUI
  
 struct ContentView: View {
-    @AppStorage("username") var username: String = "Anonymous"
+    @SceneStorage("text") var text = ""
 
     var body: some View {
-        VStack {
-            Text("Welcome, \(username)!")
-
-            Button("Log in") {
-                username = "@twostraws"
-            }
+        NavigationView {
+            TextEditor(text: $text)
         }
+        .navigationViewStyle(.stack)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
