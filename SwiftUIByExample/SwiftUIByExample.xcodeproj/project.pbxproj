@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AA9490028476D3E00263E95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA948FF28476D3E00263E95 /* AppDelegate.swift */; };
 		3AD2D91D2844A6490069AEE9 /* SwiftUIByExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2D91C2844A6490069AEE9 /* SwiftUIByExampleApp.swift */; };
 		3AD2D91F2844A6490069AEE9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2D91E2844A6490069AEE9 /* ContentView.swift */; };
 		3AD2D9212844A64A0069AEE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD2D9202844A64A0069AEE9 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3AA948FF28476D3E00263E95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AD2D9192844A6490069AEE9 /* SwiftUIByExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIByExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD2D91C2844A6490069AEE9 /* SwiftUIByExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIByExampleApp.swift; sourceTree = "<group>"; };
 		3AD2D91E2844A6490069AEE9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				3AD2D91C2844A6490069AEE9 /* SwiftUIByExampleApp.swift */,
 				3AD2D91E2844A6490069AEE9 /* ContentView.swift */,
+				3AA948FF28476D3E00263E95 /* AppDelegate.swift */,
 				3AD2D9202844A64A0069AEE9 /* Assets.xcassets */,
 				3AD2D9222844A64A0069AEE9 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA9490028476D3E00263E95 /* AppDelegate.swift in Sources */,
 				3AD2D91F2844A6490069AEE9 /* ContentView.swift in Sources */,
 				3AD2D91D2844A6490069AEE9 /* SwiftUIByExampleApp.swift in Sources */,
 			);
