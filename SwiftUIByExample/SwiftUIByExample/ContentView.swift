@@ -8,13 +8,13 @@
 import SwiftUI
  
 struct ContentView: View {
-    @SceneStorage("text") var text = ""
-
+//    @ScaledMetric var imageSize = 100.0
+    @ScaledMetric(relativeTo: .largeTitle) var imageSize = 200.0
+    
     var body: some View {
-        NavigationView {
-            TextEditor(text: $text)
-        }
-        .navigationViewStyle(.stack)
+        Image(systemName: "cloud.sun.bolt.fill")
+            .resizable()
+            .frame(width: imageSize, height: imageSize)
     }
 }
 
