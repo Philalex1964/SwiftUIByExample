@@ -99,39 +99,83 @@ import SwiftUI
 //}
 
 // 5. VStack and HStack
-struct GridStack<Content: View>: View {
-    let rows: Int
-    let columns: Int
-    let content: (Int, Int) -> Content
+//struct GridStack<Content: View>: View {
+//    let rows: Int
+//    let columns: Int
+//    let content: (Int, Int) -> Content
+//
+//    var body: some View {
+//        VStack {
+//            ForEach(0 ..< rows, id: \.self) { row in
+//                HStack {
+//                    ForEach(0 ..< columns, id: \.self) { column in
+//                        content(row, column)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
+//        self.rows = rows
+//        self.columns = columns
+//        self.content = content
+//    }
+//}
+
+//// An example view putting GridStack into practice.
+//struct ContentView: View {
+//    var body: some View {
+//        GridStack(rows: 4, columns: 4) { row, col in
+//            Image(systemName: "\(row * 4 + col).circle")
+//            Text("R\(row) C\(col)")
+//        }
+//    }
+//}
+
+// 6. LazyVStack and LazyHStack
+//struct ContentView: View {
+//    var body: some View {
+//        ScrollView {
+//            LazyVStack {
+//                ForEach(1...1000, id: \.self) { value in
+//                    Text("Row \(value)")
+//                }
+//            }
+//        }
+//        .frame(height: 300)
+//    }
+//}
+
+// 7.
+struct SampleRow: View {
+    let id: Int
 
     var body: some View {
-        VStack {
-            ForEach(0 ..< rows, id: \.self) { row in
-                HStack {
-                    ForEach(0 ..< columns, id: \.self) { column in
-                        content(row, column)
-                    }
-                }
-            }
-        }
+        Text("Row \(id)")
     }
 
-    init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
-        self.rows = rows
-        self.columns = columns
-        self.content = content
+    init(id: Int) {
+        print("Loading row \(id)")
+        self.id = id
     }
 }
 
-// An example view putting GridStack into practice.
 struct ContentView: View {
     var body: some View {
-        GridStack(rows: 4, columns: 4) { row, col in
-            Image(systemName: "\(row * 4 + col).circle")
-            Text("R\(row) C\(col)")
+        ScrollView {
+            LazyVStack {
+                ForEach(1...100, id: \.self, content: SampleRow.init)
+            }
         }
+        .frame(height: 300)
     }
 }
+
+
+
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
