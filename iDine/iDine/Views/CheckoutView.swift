@@ -15,9 +15,12 @@ struct CheckoutView: View {
     @State private var loyaltyNumber = ""
     @State private var tipAmount = 15
     @State private var showingPaymentAlert = false
+    @State private var pickupTime = "Now"
     
     let paymentTypes = ["Cash", "Credit Card", "iDine Points"]
     let tipAmounts = [10, 15, 20, 25, 0]
+    
+    let pickupTimes = ["Now", "Tonight", "Tomorrow morning"]
     
     var totalPrice: String {
         let formatter = NumberFormatter()
@@ -31,23 +34,26 @@ struct CheckoutView: View {
     
     var body: some View {
         Form {
-            //            VStack {
             Section {
                 Picker("How do you want to pay?", selection: $paymentType) {
                     ForEach(paymentTypes, id: \.self) {
                         Text($0)
                     }
                 }
-                //                .pickerStyle(.automatic)
                 
                 Toggle("Add iDine loyalty card", isOn: $addLoyaltyDetails.animation())
                 
                 if addLoyaltyDetails {
                     TextField("Enter your iDine ID", text: $loyaltyNumber)
                 }
-                
-                
-                
+            }
+            
+            Section(header: Text("Pickup time")) {
+                Picker("Pickup time", selection: $pickupTime) {
+                    ForEach(pickupTimes, id: \.self) {
+                        Text($0)
+                    }
+                }
             }
             
             Section(header: Text("Add a tip?")) {
@@ -67,7 +73,6 @@ struct CheckoutView: View {
                     showingPaymentAlert.toggle()
                 }
             }
-            //            }
             .navigationTitle("Payment")
             .navigationBarTitleDisplayMode(.inline)
         }

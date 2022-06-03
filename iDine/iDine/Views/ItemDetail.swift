@@ -35,6 +35,10 @@ struct ItemDetail: View {
                 order.add(item: item)
             }
             .font(.headline)
+            .padding()
+            .background(.black)
+            .clipShape(Capsule())
+            .foregroundColor(.white)
             
             Spacer()
         }
