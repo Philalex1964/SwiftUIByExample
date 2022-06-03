@@ -9,8 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button ("Action") {
+            let smallTriangle = Triangle(size: 3)
+            print(smallTriangle.draw())
+        }
+        
+        Button ("Action1") {
+            let smallTriangle = Triangle(size: 3)
+            let flippedTriangle = FlippedShape(shape: smallTriangle)
+            print(flippedTriangle.draw())
+        }
+        
+        Button ("Action2") {
+            let smallTriangle = Triangle(size: 3)
+            let flippedTriangle = FlippedShape(shape: smallTriangle)
+            let joinedTriangles = JoinedShape(top: smallTriangle, bottom: flippedTriangle)
+            print(joinedTriangles.draw())
+        }
     }
 }
 
