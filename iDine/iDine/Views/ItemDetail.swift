@@ -44,6 +44,12 @@ struct ItemDetail: View {
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(role: .none, action: {
+            
+        }, label: {
+            Image(systemName: "star.fill")
+                .foregroundColor(.yellow)
+        }))
     }
 }
 

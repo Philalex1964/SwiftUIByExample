@@ -19,6 +19,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Order", systemImage: "square.and.pencil")
                 }
+            ContentView()
+                .tabItem {
+                    Label("Favorites", systemImage: "star.fill")
+                }
         }
     }
 }
