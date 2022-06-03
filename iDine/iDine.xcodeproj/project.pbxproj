@@ -18,6 +18,7 @@
 		3A997119284A0CCB003E8235 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A997118284A0CCB003E8235 /* ItemRow.swift */; };
 		3A99711B284A137F003E8235 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99711A284A137F003E8235 /* ItemDetail.swift */; };
 		3A99711D284A2B4C003E8235 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99711C284A2B4C003E8235 /* OrderView.swift */; };
+		3A99711F284A2D9E003E8235 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99711E284A2D9E003E8235 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		3A997118284A0CCB003E8235 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		3A99711A284A137F003E8235 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 		3A99711C284A2B4C003E8235 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		3A99711E284A2D9E003E8235 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				3A997101284A03BA003E8235 /* ContentView.swift */,
+				3A99711E284A2D9E003E8235 /* MainView.swift */,
 				3A997118284A0CCB003E8235 /* ItemRow.swift */,
 				3A99711A284A137F003E8235 /* ItemDetail.swift */,
 				3A99711C284A2B4C003E8235 /* OrderView.swift */,
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A99711B284A137F003E8235 /* ItemDetail.swift in Sources */,
+				3A99711F284A2D9E003E8235 /* MainView.swift in Sources */,
 				3A99711D284A2B4C003E8235 /* OrderView.swift in Sources */,
 				3A997102284A03BA003E8235 /* ContentView.swift in Sources */,
 				3A997100284A03BA003E8235 /* iDineApp.swift in Sources */,
