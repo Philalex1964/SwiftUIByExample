@@ -9,23 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Button ("Action") {
-            let smallTriangle = Triangle(size: 3)
-            print(smallTriangle.draw())
-        }
+        Text("This is some longer text that is limited to three lines maximum, so anything more than that will cause the text to clip.")
+            .lineLimit(3)
+            .frame(width: 200)
         
-        Button ("Action1") {
-            let smallTriangle = Triangle(size: 3)
-            let flippedTriangle = FlippedShape(shape: smallTriangle)
-            print(flippedTriangle.draw())
-        }
-        
-        Button ("Action2") {
-            let smallTriangle = Triangle(size: 3)
-            let flippedTriangle = FlippedShape(shape: smallTriangle)
-            let joinedTriangles = JoinedShape(top: smallTriangle, bottom: flippedTriangle)
-            print(joinedTriangles.draw())
-        }
+        Text("This is some longer text that is limited to three lines maximum, so anything more than that will cause the text to clip.")
+            .lineLimit(1)
+            .truncationMode(.middle)
     }
 }
 
