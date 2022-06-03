@@ -60,7 +60,8 @@ struct CheckoutView: View {
             }
             
             Section(header:
-                        Text("TOTAL: \(totalPrice)")
+                    Text("TOTAL: \(totalPrice)")
+                .font(.largeTitle)
             ) {
                 Button("Confirm order") {
                     showingPaymentAlert.toggle()
