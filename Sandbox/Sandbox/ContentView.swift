@@ -10,12 +10,11 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        Image("dog")
-
-//        Image(uiImage: UIImage(named: "cat")!)
-
-        Image(systemName: "cloud.heavyrain.fill")
-            .font(.largeTitle)
+        Image("Example")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+//            .scaledToFill()
+            .frame(width: 250)
     }
 }
 struct ContentView_Previews: PreviewProvider {
