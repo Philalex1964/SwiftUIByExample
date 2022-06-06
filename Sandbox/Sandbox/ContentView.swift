@@ -7,99 +7,59 @@
 
 import SwiftUI
 
-// first option is to wrap your output in a group, so that no matter whether you send back an image or a text view they both go back in a group
-//struct ContentView: View {
-//    var tossResult: some View {
-//        Group {
-//            if Bool.random() {
-//                Image("paul")
-//                    .resizable()
-//                    .scaledToFit()
-//            } else {
-//                Text("Better luck next time")
-//                    .font(.title)
-//            }
-//        }
-//        .frame(width: 400, height: 300)
-//    }
-//
-//    var body: some View {
-//        VStack {
-//            Text("Coin Flip")
-//                .font(.largeTitle)
-//
-//            tossResult
-//        }
-//    }
-//}
+struct SimpleGameResult {
+    let id = UUID()
+    let score: Int
+}
 
-// The second is to use a type-erased wrapper called AnyView that we can return:
-//struct ContentView: View {
-//    var tossResult: some View {
-//        if Bool.random() {
-//            return AnyView(Image("Example").resizable().scaledToFit())
-//        } else {
-//            return AnyView(Text("Better luck next time").font(.title))
-//        }
-//    }
-//
-//    var body: some View {
-//        VStack {
-//            Text("Coin Flip")
-//                .font(.largeTitle)
-//
-//            tossResult
-//                .frame(width: 400, height: 300)
-//        }
-//    }
-//}
-
-// A third option is to apply the @ViewBuilder attribute yourself to any properties that need it, like this:
-//struct ContentView: View {
-//    @ViewBuilder var tossResult: some View {
-//        if Bool.random() {
-//            Image("Example")
-//                .resizable()
-//                .scaledToFit()
-//        } else {
-//            Text("Better luck next time")
-//                .font(.title)
-//        }
-//    }
-//
-//    var body: some View {
-//        VStack {
-//            Text("Coin Flip")
-//                .font(.largeTitle)
-//
-//            tossResult
-//                .frame(width: 400, height: 300)
-//        }
-//    }
-//}
-
-// The fourth solution, and the one that works best the majority of the time, is to break up your views into smaller views, then combine them together as needed:
-struct TossResult: View {
-    var body: some View {
-        if Bool.random() {
-            Image("Example")
-                .resizable()
-                .scaledToFit()
-        } else {
-            Text("Better luck next time")
-                .font(.title)
-        }
-    }
+//As an alternative, if you make a struct that conforms to the Identifiable protocol you can just write ForEach(results). Conforming to this protocol means adding an id property that uniquely identifies each object, which in our case we already have. So, this code achieves the same result:
+struct IdentifiableGameResult: Identifiable {
+    var id = UUID()
+    var score: Int
 }
 
 struct ContentView: View {
+    let results = [
+        SimpleGameResult(score: 8),
+        SimpleGameResult(score: 5),
+        SimpleGameResult(score: 10)
+    ]
+    
+    let results1 = [
+        IdentifiableGameResult(score: 8),
+        IdentifiableGameResult(score: 5),
+        IdentifiableGameResult(score: 10)
+    ]
+    
+    let colors: [Color] = [.red, .green, .blue]
+    
     var body: some View {
+        VStack(alignment: .leading) {
+            ForEach((1...10).reversed(), id: \.self) {
+                Text("\($0)…")
+            }
+            
+            Text("Ready or not, here I come!")
+        }
+        
         VStack {
-            Text("Coin Flip")
-                .font(.largeTitle)
-
-            TossResult()
-                .frame(width: 400, height: 300)
+            ForEach(colors, id: \.self) { color in
+                Text(color.description.capitalized)
+                    .padding()
+                    .background(color)
+            }
+        }
+        
+        VStack {
+            ForEach(results, id: \.id) { result in
+                Text("Result: \(result.score)")
+            }
+        }
+        
+        VStack {
+            ForEach(results1) { result in
+                Text("Result: \(result.score)")
+            }
         }
     }
 }
