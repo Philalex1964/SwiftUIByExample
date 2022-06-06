@@ -7,37 +7,55 @@
 
 import SwiftUI
 
-struct AdaptiveStack<Content: View>: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
-    let horizontalAlignment: HorizontalAlignment
-    let verticalAlignment: VerticalAlignment
-    let spacing: CGFloat?
-    let content: () -> Content
-
-    init(horizontalAlignment: HorizontalAlignment = .center, verticalAlignment: VerticalAlignment = .center, spacing: CGFloat? = nil, @ViewBuilder content: @escaping () -> Content) {
-        self.horizontalAlignment = horizontalAlignment
-        self.verticalAlignment = verticalAlignment
-        self.spacing = spacing
-        self.content = content
-    }
-
-    var body: some View {
-        Group {
-            if sizeClass == .compact {
-                VStack(alignment: horizontalAlignment, spacing: spacing, content: content)
-            } else {
-                HStack(alignment: verticalAlignment, spacing: spacing, content: content)
-            }
-        }
-    }
-}
-
 struct ContentView: View {
     var body: some View {
-        AdaptiveStack {
-            Text("Horizontal when there's lots of space")
-            Text("but")
-            Text("Vertical when space is restricted")
+        ScrollView {
+            VStack(spacing: 20) {
+                ForEach(0..<10) {
+                    Text("Item \($0)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .frame(width: 200, height: 200)
+                        .background(.red)
+                }
+            }
+        }
+        .frame(height: 350)
+        
+//        ScrollView(.horizontal) {
+//            HStack(spacing: 20) {
+//                ForEach(0..<10) {
+//                    Text("Item \($0)")
+//                        .foregroundColor(.white)
+//                        .font(.largeTitle)
+//                        .frame(width: 200, height: 200)
+//                        .background(.red)
+//                }
+//            }
+//        }
+        
+        ScrollView( [.horizontal, .vertical]) {
+            HStack(spacing: 20) {
+                ForEach(0..<10) {
+                    Text("Item \($0)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .frame(width: 200, height: 200)
+                        .background(.red)
+                }
+            }
+        }
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 20) {
+                ForEach(0..<10) {
+                    Text("Item \($0)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .frame(width: 200, height: 200)
+                        .background(.red)
+                }
+            }
         }
     }
 }
