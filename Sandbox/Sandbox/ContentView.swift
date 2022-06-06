@@ -10,21 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                Text("Left")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-                    .frame(width: geometry.size.width * 0.33)
-                    .background(.yellow)
-                Text("Right")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-                    .frame(width: geometry.size.width * 0.67)
-                    .background(.orange)
-            }
-        }
-        .frame(height: 50)
+        Text("Hello World")
+            .frame(minWidth: 100, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
+            .background(.red)
+            .ignoresSafeArea()
     }
 }
 
@@ -32,7 +21,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
-                .previewInterfaceOrientation(.portraitUpsideDown)
+                .previewInterfaceOrientation(.portrait)
             ContentView()
         }
     }
