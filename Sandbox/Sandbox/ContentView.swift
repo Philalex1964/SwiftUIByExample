@@ -10,33 +10,20 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        Image(systemName: "theatermasks")
-            .symbolRenderingMode(.hierarchical)
-            .font(.system(size: 144))
+        Button {
+            print("Button tapped")
+        } label: {
+            Text("Welcome")
+                .frame(minWidth: 0, maxWidth: 200, minHeight: 0, maxHeight: 200)
+                .font(.largeTitle)
+        }
         
-        Image(systemName: "theatermasks")
-            .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.blue)
-            .font(.system(size: 144))
-        
-        Image(systemName: "shareplay")
-            .symbolRenderingMode(.palette)
-            .foregroundStyle(.blue, .black)
-            .font(.system(size: 144))
-        
-        Image(systemName: "person.3.sequence.fill")
-            .symbolRenderingMode(.palette)
-            .foregroundStyle(.blue, .green, .red)
-            .font(.system(size: 144))
-        
-        Image(systemName: "person.3.sequence.fill")
-            .symbolRenderingMode(.palette)
-            .foregroundStyle(
-                .linearGradient(colors: [.red, .black], startPoint: .top, endPoint: .bottomTrailing),
-                .linearGradient(colors: [.green, .black], startPoint: .top, endPoint: .bottomTrailing),
-                .linearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottomTrailing)
-            )
-            .font(.system(size: 144))
+        Text("Please log in")
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .background(.red)
+
     }
     
     
