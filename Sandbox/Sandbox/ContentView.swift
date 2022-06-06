@@ -10,27 +10,26 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.redactionReasons) var redactionReasons
     
-    let bio = "The rain in Spain falls mainly on the Spaniards"
-
     var body: some View {
-        Text("This is placeholder text")
-            .font(.title)
-            .redacted(reason: .placeholder)
-
         VStack {
-            Text("This is placeholder text")
-            Text("And so is this")
-        }
-        .font(.title)
-        .redacted(reason: .placeholder)
-        
-        if redactionReasons == .placeholder {
-            Text("Loading…")
-        } else {
-            Text(bio)
-                .redacted(reason: redactionReasons)
-        }
+            Text("Card number")
+                .font(.headline)
             
+            Text("1234 5678 9012 3456")
+                .privacySensitive()
+                .redacted(reason: .privacy)
+        }
+        
+        VStack {
+            Text("Card number")
+                .font(.headline)
+            
+            if redactionReasons.contains(.privacy) {
+                Text("[HIDDEN]")
+            } else {
+                Text("1234 5678 9012 3456")
+            }
+        }
     }
 }
 struct ContentView_Previews: PreviewProvider {
