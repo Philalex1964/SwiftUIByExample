@@ -9,41 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("SwiftUI")
-            Text("rocks")
+        ZStack {
+            Image("Example")
+            Text("Hacking with Swift")
+                .font(.largeTitle)
+                .background(.black)
+                .foregroundColor(.white)
         }
         
-        HStack {
-            Text("SwiftUI")
-            Text("rocks")
+        ZStack(alignment: .bottomTrailing) {
+            Image("paul-2")
+                .resizable()
+                .scaledToFit()
+            Text("Hacking with Swift")
+                .font(.largeTitle)
+                .background(.black)
+                .foregroundColor(.white)
+                .offset(x: -5, y: -5)
         }
         
-        VStack(alignment: .leading, spacing: 20) {
-            Text("SwiftUI")
-//            Divider()
-            Text("rocks")
-        }
-        
-        VStack {
-            Spacer()
-            Text("Hello World")
-            Spacer()
-            Spacer()
-        }
-        
-        VStack {
-            Text("First Label")
-            Spacer()
-//                .frame(height: 50)
-                .frame(minHeight: 50, maxHeight: 500)
-            Text("Second Label")
-        }
-        
-        VStack {
-            Text("First Label")
-            Spacer(minLength: 50)
-            Text("Second Label")
+        ZStack {
+            Rectangle()
+                .fill(.green)
+                .frame(width: 50, height: 50)
+                .zIndex(1)
+
+            Rectangle()
+                .fill(.red)
+                .frame(width: 100, height: 100)
         }
     }
 }
