@@ -9,37 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            List(0..<100) { i in
-                Text("Row \(i)")
-            }
-            .navigationTitle("Select a row")
-            .safeAreaInset(edge: .bottom) {
-                Text("Outside Safe Area")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(.indigo)
-            }
+        VStack {
+            Text("SwiftUI")
+            Text("rocks")
         }
         
-        NavigationView {
-            List(0..<100) { i in
-                Text("Row \(i)")
-            }
-            .navigationTitle("Select a row")
-            .safeAreaInset(edge: .bottom, alignment: .trailing) {
-                Button {
-                    print("Show help")
-                } label: {
-                    Image(systemName: "info.circle.fill")
-                        .font(.largeTitle)
-                        .symbolRenderingMode(.multicolor)
-                        .padding(.trailing)
-                }
-                .accessibilityLabel("Show help")
-            }
+        HStack {
+            Text("SwiftUI")
+            Text("rocks")
+        }
+        
+        VStack(alignment: .leading, spacing: 20) {
+            Text("SwiftUI")
+//            Divider()
+            Text("rocks")
+        }
+        
+        VStack {
+            Spacer()
+            Text("Hello World")
+            Spacer()
+            Spacer()
+        }
+        
+        VStack {
+            Text("First Label")
+            Spacer()
+//                .frame(height: 50)
+                .frame(minHeight: 50, maxHeight: 500)
+            Text("Second Label")
+        }
+        
+        VStack {
+            Text("First Label")
+            Spacer(minLength: 50)
+            Text("Second Label")
         }
     }
 }
