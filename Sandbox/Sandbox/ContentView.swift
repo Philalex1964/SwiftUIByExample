@@ -8,39 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.redactionReasons) var redactionReasons
+    
+    let bio = "The rain in Spain falls mainly on the Spaniards"
 
     var body: some View {
-        Label("Your account", systemImage: "folder.circle")
+        Text("This is placeholder text")
             .font(.title)
-        
-        Label("Welcome to the app", image: "Star")
-        
+            .redacted(reason: .placeholder)
+
         VStack {
-            Label("Text Only", systemImage: "heart")
-                .font(.title)
-                .labelStyle(.titleOnly)
-
-            Label("Icon Only", systemImage: "star")
-                .font(.title)
-                .labelStyle(.iconOnly)
-
-            Label("Both", systemImage: "paperplane")
-                .font(.title)
-                .labelStyle(.titleAndIcon)
+            Text("This is placeholder text")
+            Text("And so is this")
         }
+        .font(.title)
+        .redacted(reason: .placeholder)
         
-        Label {
-            Text("Paul Hudson")
-                .foregroundColor(.primary)
-                .font(.largeTitle)
-                .padding()
-                .background(.gray.opacity(0.2))
-                .clipShape(Capsule())
-        } icon: {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.blue)
-                .frame(width: 64, height: 64)
+        if redactionReasons == .placeholder {
+            Text("Loading…")
+        } else {
+            Text(bio)
+                .redacted(reason: redactionReasons)
         }
+            
     }
 }
 struct ContentView_Previews: PreviewProvider {
