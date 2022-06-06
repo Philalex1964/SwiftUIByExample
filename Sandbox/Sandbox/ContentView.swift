@@ -10,26 +10,48 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        Image(systemName: "moon.stars.fill")
-
-        Image(systemName: "wind.snow")
-            .font(.largeTitle)
-        
-        Image(systemName: "cloud.heavyrain.fill")
-            .font(.largeTitle)
-            .foregroundColor(.red)
-        
-        Image(systemName: "cloud.sun.rain.fill")
-            .renderingMode(.original)
-            .font(.largeTitle)
+        Text("Hello World")
             .padding()
-            .background(.black)
-            .clipShape(Circle())
-        
-        Image(systemName: "person.crop.circle.fill.badge.plus")
-            .renderingMode(.original)
-            .foregroundColor(.blue)
+            .foregroundColor(.white)
             .font(.largeTitle)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
+            )
+        
+        Text("Hello World")
+            .padding()
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom)
+            )
+        
+        Text("Hello World")
+            .padding()
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing)
+            )
+        
+        Circle()
+            .fill(
+                RadialGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple]), center: .center, startRadius: 50, endRadius: 100)
+            )
+            .frame(width: 200, height: 200)
+        
+        Circle()
+            .fill(
+                AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
+            )
+            .frame(width: 200, height: 200)
+        
+        Circle()
+            .strokeBorder(
+                AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
+                lineWidth: 50
+            )
+            .frame(width: 200, height: 200)
     }
 }
 struct ContentView_Previews: PreviewProvider {
