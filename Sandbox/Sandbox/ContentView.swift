@@ -8,28 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.redactionReasons) var redactionReasons
     
     var body: some View {
-        VStack {
-            Text("Card number")
-                .font(.headline)
-            
-            Text("1234 5678 9012 3456")
-                .privacySensitive()
-                .redacted(reason: .privacy)
-        }
+        let markdownText: LocalizedStringKey = "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text."
         
         VStack {
-            Text("Card number")
-                .font(.headline)
-            
-            if redactionReasons.contains(.privacy) {
-                Text("[HIDDEN]")
-            } else {
-                Text("1234 5678 9012 3456")
-            }
+            Text("This is regular text. \n")
+                .font(.system(size: 24))
+            +
+            Text("* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.")
+            Text("~~A strikethrough example~~")
+            Text("`Monospaced works too`")
+            Text("Visit Apple: [click here](https://apple.com)")
         }
+
+        Text(markdownText)
+
+        Text(verbatim: "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.")
     }
 }
 struct ContentView_Previews: PreviewProvider {
