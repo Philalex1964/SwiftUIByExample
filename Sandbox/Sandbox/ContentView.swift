@@ -10,48 +10,30 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        Text("Hello World")
-            .padding()
-            .foregroundColor(.white)
-            .font(.largeTitle)
+        Text("Hacking with Swift")
+            .font(.system(size: 48))
+            .padding(50)
             .background(
-                LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
+                Image("Example")
+                    .resizable()
             )
         
-        Text("Hello World")
-            .padding()
-            .foregroundColor(.white)
+        Text("Hacking with Swift")
             .font(.largeTitle)
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom)
-            )
-        
-        Text("Hello World")
             .padding()
-            .foregroundColor(.white)
+            .background(Circle()
+                .fill(.red)
+                .frame(width: 50, height: 50))
+
+        Text("Hacking with Swift")
             .font(.largeTitle)
+            .padding()
             .background(
-                LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing)
+                Circle()
+                    .fill(.red)
+                    .frame(width: 100, height: 100)
             )
-        
-        Circle()
-            .fill(
-                RadialGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple]), center: .center, startRadius: 50, endRadius: 100)
-            )
-            .frame(width: 200, height: 200)
-        
-        Circle()
-            .fill(
-                AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
-            )
-            .frame(width: 200, height: 200)
-        
-        Circle()
-            .strokeBorder(
-                AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, startAngle: .zero, endAngle: .degrees(360)),
-                lineWidth: 50
-            )
-            .frame(width: 200, height: 200)
+            .clipped()
     }
 }
 struct ContentView_Previews: PreviewProvider {
