@@ -10,23 +10,27 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        Button {
-            print("Button tapped")
-        } label: {
-            Text("Welcome")
-                .frame(minWidth: 0, maxWidth: 200, minHeight: 0, maxHeight: 200)
-                .font(.largeTitle)
+        VStack {
+            Text("Using")
+            Text("SwiftUI")
+                .padding()
+            Text("rocks")
         }
         
-        Text("Please log in")
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .font(.largeTitle)
-            .foregroundColor(.white)
-            .background(.red)
-
+        VStack {
+            Text("Using")
+            Text("SwiftUI")
+                .padding(.bottom)
+            Text("rocks")
+        }
+        
+        VStack {
+            Text("Using")
+            Text("SwiftUI")
+                .padding(.bottom, 100)
+            Text("rocks")
+        }
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
