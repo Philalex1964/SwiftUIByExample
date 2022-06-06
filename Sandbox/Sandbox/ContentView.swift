@@ -10,21 +10,23 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        let markdownText: LocalizedStringKey = "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text."
-        
-        VStack {
-            Text("This is regular text. \n")
-                .font(.system(size: 24))
-            +
-            Text("* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.")
-            Text("~~A strikethrough example~~")
-            Text("`Monospaced works too`")
-            Text("Visit Apple: [click here](https://apple.com)")
+        VStack(spacing: 50) {
+            Text("You can't touch this")
+
+            Text("Break it down!")
+                .textSelection(.enabled)
         }
-
-        Text(markdownText)
-
-        Text(verbatim: "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.")
+        
+        VStack(spacing: 50) {
+            Text("You can't touch this")
+            Text("Break it down!")
+        }
+        .textSelection(.enabled)
+        
+        List(0..<100) { index in
+            Text("Row \(index)")
+        }
+        .textSelection(.enabled)
     }
 }
 struct ContentView_Previews: PreviewProvider {
