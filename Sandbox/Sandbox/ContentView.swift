@@ -7,24 +7,47 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+struct AdaptiveStack<Content: View>: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+    let horizontalAlignment: HorizontalAlignment
+    let verticalAlignment: VerticalAlignment
+    let spacing: CGFloat?
+    let content: () -> Content
+
+    init(horizontalAlignment: HorizontalAlignment = .center, verticalAlignment: VerticalAlignment = .center, spacing: CGFloat? = nil, @ViewBuilder content: @escaping () -> Content) {
+        self.horizontalAlignment = horizontalAlignment
+        self.verticalAlignment = verticalAlignment
+        self.spacing = spacing
+        self.content = content
+    }
 
     var body: some View {
-        if horizontalSizeClass == .compact {
-            Text("Compact")
-        } else {
-            Text("Regular")
-        }
-    }
-}
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            Group {
-                ContentView()
-                    .previewInterfaceOrientation(.portrait)
-                ContentView()
+        Group {
+            if sizeClass == .compact {
+                VStack(alignment: horizontalAlignment, spacing: spacing, content: content)
+            } else {
+                HStack(alignment: verticalAlignment, spacing: spacing, content: content)
             }
         }
     }
+}
+
+struct ContentView: View {
+    var body: some View {
+        AdaptiveStack {
+            Text("Horizontal when there's lots of space")
+            Text("but")
+            Text("Vertical when space is restricted")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewInterfaceOrientation(.portrait)
+            ContentView()
+        }
+    }
+}
