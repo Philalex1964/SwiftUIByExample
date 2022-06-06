@@ -11,10 +11,10 @@ struct ContentView: View {
     
     var body: some View {
         Image("Example")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-//            .scaledToFill()
-            .frame(width: 250)
+            .resizable(resizingMode: .tile)
+        
+        Image("Example")
+            .resizable(capInsets: EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20), resizingMode: .tile)
     }
 }
 struct ContentView_Previews: PreviewProvider {
