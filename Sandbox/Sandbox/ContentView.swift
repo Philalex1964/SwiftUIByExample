@@ -10,11 +10,26 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        Image("Example")
-            .resizable(resizingMode: .tile)
+        Image(systemName: "moon.stars.fill")
+
+        Image(systemName: "wind.snow")
+            .font(.largeTitle)
         
-        Image("Example")
-            .resizable(capInsets: EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20), resizingMode: .tile)
+        Image(systemName: "cloud.heavyrain.fill")
+            .font(.largeTitle)
+            .foregroundColor(.red)
+        
+        Image(systemName: "cloud.sun.rain.fill")
+            .renderingMode(.original)
+            .font(.largeTitle)
+            .padding()
+            .background(.black)
+            .clipShape(Circle())
+        
+        Image(systemName: "person.crop.circle.fill.badge.plus")
+            .renderingMode(.original)
+            .foregroundColor(.blue)
+            .font(.largeTitle)
     }
 }
 struct ContentView_Previews: PreviewProvider {
