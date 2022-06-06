@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     var body: some View {
-        VStack {
-            Text("Using")
-            Text("SwiftUI")
-                .padding()
-            Text("rocks")
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                Text("Left")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .frame(width: geometry.size.width * 0.33)
+                    .background(.yellow)
+                Text("Right")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .frame(width: geometry.size.width * 0.67)
+                    .background(.orange)
+            }
         }
-        
-        VStack {
-            Text("Using")
-            Text("SwiftUI")
-                .padding(.bottom)
-            Text("rocks")
-        }
-        
-        VStack {
-            Text("Using")
-            Text("SwiftUI")
-                .padding(.bottom, 100)
-            Text("rocks")
-        }
+        .frame(height: 50)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .previewInterfaceOrientation(.portraitUpsideDown)
+            ContentView()
+        }
     }
 }
