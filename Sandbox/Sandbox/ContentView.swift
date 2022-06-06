@@ -8,57 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+    let colors: [Color] = [.red, .green, .blue]
+    
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                ForEach(0..<10) {
-                    Text("Item \($0)")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
+            ScrollViewReader { value in
+                Button("Jump to #90") {
+                    value.scrollTo(90)
+                }
+                .padding()
+                
+                ForEach(0..<100) { i in
+                    Text("Example \(i)")
+                        .font(.title)
                         .frame(width: 200, height: 200)
-                        .background(.red)
+                        .background(colors[i % colors.count])
+                        .id(i)
                 }
             }
         }
         .frame(height: 350)
         
-//        ScrollView(.horizontal) {
-//            HStack(spacing: 20) {
-//                ForEach(0..<10) {
-//                    Text("Item \($0)")
-//                        .foregroundColor(.white)
-//                        .font(.largeTitle)
-//                        .frame(width: 200, height: 200)
-//                        .background(.red)
-//                }
-//            }
-//        }
-        
-        ScrollView( [.horizontal, .vertical]) {
-            HStack(spacing: 20) {
-                ForEach(0..<10) {
-                    Text("Item \($0)")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                        .frame(width: 200, height: 200)
-                        .background(.red)
+        ScrollView {
+                    ScrollViewReader { value in
+                        Button("Jump to #8") {
+                            value.scrollTo(8, anchor: .top)
+                        }
+                        .padding()
+
+                        ForEach(0..<100) { i in
+                            Text("Example \(i)")
+                                .font(.title)
+                                .frame(width: 200, height: 200)
+                                .background(colors[i % colors.count])
+                                .id(i)
+                        }
+                    }
                 }
-            }
-        }
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
-                ForEach(0..<10) {
-                    Text("Item \($0)")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                        .frame(width: 200, height: 200)
-                        .background(.red)
-                }
-            }
-        }
+                .frame(height: 350)
     }
 }
+
+//If you call scrollTo() inside withAnimation() the movement will be animated.
+//Tip: scrollTo() works great with lists too!
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
