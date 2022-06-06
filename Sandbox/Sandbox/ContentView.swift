@@ -8,45 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
     var body: some View {
-        ZStack {
-            Image("Example")
-            Text("Hacking with Swift")
-                .font(.largeTitle)
-                .background(.black)
-                .foregroundColor(.white)
-        }
-        
-        ZStack(alignment: .bottomTrailing) {
-            Image("paul-2")
-                .resizable()
-                .scaledToFit()
-            Text("Hacking with Swift")
-                .font(.largeTitle)
-                .background(.black)
-                .foregroundColor(.white)
-                .offset(x: -5, y: -5)
-        }
-        
-        ZStack {
-            Rectangle()
-                .fill(.green)
-                .frame(width: 50, height: 50)
-                .zIndex(1)
-
-            Rectangle()
-                .fill(.red)
-                .frame(width: 100, height: 100)
+        if horizontalSizeClass == .compact {
+            Text("Compact")
+        } else {
+            Text("Regular")
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-                .previewInterfaceOrientation(.portrait)
-            ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            Group {
+                ContentView()
+                    .previewInterfaceOrientation(.portrait)
+                ContentView()
+            }
         }
     }
-}
