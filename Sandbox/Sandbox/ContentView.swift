@@ -10,11 +10,25 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HStack {
-            Text("The rain Spain falls mainly on the Spaniards.")
-            Text("Knowledge is power, France is bacon.")
-                .layoutPriority(1)
+            Image(systemName: "clock.fill")
+            Text("Set the time")
         }
-        .font(.largeTitle)
+        .font(.largeTitle.bold())
+        .foregroundStyle(.quaternary)
+        
+        HStack {
+            Image(systemName: "clock.fill")
+            Text("Set the time")
+        }
+        .font(.largeTitle.bold())
+        .foregroundStyle(
+            .linearGradient(
+                colors: [.red, .black],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+
     }
 }
 
