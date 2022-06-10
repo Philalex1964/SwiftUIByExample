@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var score = 0
+    @State private var password: String = ""
 
     var body: some View {
         VStack {
-            TextField("Enter your score", value: $score, format: .number)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
-                .padding()
-
-            Text("Your score was \(score).")
+            SecureField("Enter a password", text: $password)
+            Text("You entered: \(password)")
         }
     }
 }
