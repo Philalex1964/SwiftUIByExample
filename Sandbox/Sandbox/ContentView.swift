@@ -8,52 +8,39 @@
 import SwiftUI
 
 //struct ContentView: View {
-//    let colors: [Color] = [.red, .green, .blue]
-//
 //    var body: some View {
-//        ScrollView(.horizontal, showsIndicators: false) {
-//            HStack(spacing: 0) {
-//                ForEach(1..<20) { num in
-//                    VStack {
-//                        GeometryReader { geo in
-//                            Text("Number \(num)")
-//                                .font(.largeTitle)
-//                                .padding()
-//                                .background(.red)
-//                                .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
-//                                .frame(width: 200, height: 200)
-//                        }
-//                        .frame(width: 200, height: 200)
-//                    }
+//        ScrollView {
+//            LazyVStack {
+//                ForEach(1...100, id: \.self) { value in
+//                    Text("Row \(value)")
 //                }
 //            }
 //        }
+//        .frame(height: 300)
 //    }
 //}
 
-struct ContentView: View {
-    @State var dragAmount = CGSize.zero
+struct SampleRow: View {
+    let id: Int
 
     var body: some View {
-        VStack {
-            Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 200, height: 150)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .rotation3DEffect(.degrees(-Double(dragAmount.width) / 20), axis: (x: 0, y: 1, z: 0))
-                .rotation3DEffect(.degrees(Double(dragAmount.height / 20)), axis: (x: 1, y: 0, z: 0))
-                .offset(dragAmount)
-                .gesture(
-                    DragGesture()
-                        .onChanged { dragAmount = $0.translation }
-                        .onEnded { _ in
-                            withAnimation(.spring()) {
-                                dragAmount = .zero
-                            }
-                        }
-                )
+        Text("Row \(id)")
+    }
+
+    init(id: Int) {
+        print("Loading row \(id)")
+        self.id = id
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(1...100, id: \.self, content: SampleRow.init)
+            }
         }
-        .frame(width: 400, height: 400)
+        .frame(height: 300)
     }
 }
 
