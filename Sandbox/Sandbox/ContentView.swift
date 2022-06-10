@@ -14,6 +14,7 @@ struct ContentView: View {
         VStack(alignment: .leading) {
             TextField("Enter your name", text: $name)
                 .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
             Text("Hello, \(name)!")
         }
     }
