@@ -8,32 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showDetails = false
-    
+    @State private var name: String = "Tim"
+
     var body: some View {
-        Button {
-            print("Button tapped!")
-        } label: {
-            Image("paul")
-        }
-        
-        VStack {
-            Button {
-                showDetails.toggle()
-            } label: {
-                Text("Press Me")
-                    .padding(20)
-            }
-            .contentShape(Rectangle())
-            
-            if showDetails {
-                Text("You should follow me on Twitter: @twostraws")
-                    .font(.largeTitle)
-            }
-            
-            Button("Delete", role: .destructive) {
-                print("Perform delete")
-            }
+        VStack(alignment: .leading) {
+            TextField("Enter your name", text: $name)
+            Text("Hello, \(name)!")
         }
     }
 }
