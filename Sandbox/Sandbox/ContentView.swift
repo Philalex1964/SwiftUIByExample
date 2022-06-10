@@ -8,9 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showDetails = false
+    
     var body: some View {
+        Button {
+            print("Button tapped!")
+        } label: {
+            Image("paul")
+        }
         
-        Text("05/08/2022")
+        VStack {
+            Button {
+                showDetails.toggle()
+            } label: {
+                Text("Press Me")
+                    .padding(20)
+            }
+            .contentShape(Rectangle())
+            
+            if showDetails {
+                Text("You should follow me on Twitter: @twostraws")
+                    .font(.largeTitle)
+            }
+            
+            Button("Delete", role: .destructive) {
+                print("Perform delete")
+            }
+        }
     }
 }
 
