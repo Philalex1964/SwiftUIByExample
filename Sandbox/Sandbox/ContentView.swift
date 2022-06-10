@@ -7,14 +7,30 @@
 
 import SwiftUI
 
+//struct ContentView: View {
+//    @State private var showGreeting = true
+//
+//    var body: some View {
+//        VStack {
+//            Toggle("Show welcome message", isOn: $showGreeting)
+////                .toggleStyle(SwitchToggleStyle(tint: .red))
+//                .tint(.yellow)
+//
+//            if showGreeting {
+//                Text("Hello World!")
+//            }
+//        }
+//    }
+//}
+
+// button style iOS15+
 struct ContentView: View {
-    @State private var password: String = ""
+    @State private var isOn = false
 
     var body: some View {
-        VStack {
-            SecureField("Enter a password", text: $password)
-            Text("You entered: \(password)")
-        }
+        Toggle("Filter", isOn: $isOn)
+            .toggleStyle(.button)
+            .tint(.mint)
     }
 }
 
