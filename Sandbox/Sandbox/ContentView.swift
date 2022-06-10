@@ -8,29 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var tipAmount = ""
-    
+    @State private var score = 0
+
     var body: some View {
         VStack {
-            TextField("Tip Amount ", text: $tipAmount)
-                .textFieldStyle(.roundedBorder)
+            TextField("Enter your score", value: $score, format: .number)
                 .keyboardType(.decimalPad)
-            
-            Button("Submit") {
-                print("Tip: \(tipAmount)")
-                hideKeyboard()
-            }
+                .textFieldStyle(.roundedBorder)
+                .padding()
+
+            Text("Your score was \(score).")
         }
     }
 }
-
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
